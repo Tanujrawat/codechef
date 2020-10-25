@@ -1,0 +1,13 @@
+import bisect
+n = int(input())
+l = list(map(int,input().split()))
+count = 0
+l1 = [l[0]]
+for i in range(1,n):
+    ind = bisect.bisect(l1,l[i])
+    if ind < i:
+        bisect.insort(l1,l[i])
+        count += i-ind
+    else:
+        l1.append(l[i])
+print(count)
